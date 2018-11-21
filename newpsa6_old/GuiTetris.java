@@ -20,6 +20,7 @@ import javafx.scene.input.*;
 import javafx.scene.text.*;
 import javafx.geometry.*;
 
+import java.awt.*;
 import java.util.*;
 import java.io.*;
 import javafx.scene.media.*;
@@ -40,6 +41,9 @@ public class GuiTetris extends Application {
   private Rectangle[][] rectNext = new Rectangle[4][4];
   private Rectangle[][] rectHold = new Rectangle[4][4];
 
+  private Text linesCleared = new Text();
+  private Text announcement = new Text();
+
 
   @Override
   public void start(Stage primaryStage) {
@@ -56,21 +60,8 @@ public class GuiTetris extends Application {
     pane.setHgap(TILE_GAP); 
     pane.setVgap(TILE_GAP);
 
-    // check if it is already game over
-    if(!tetris.isGameover){
-      // if it is not game over, set message "Tetris"
-      setGameText("Tetris", 0, 0, 8, 2);
-    } else {
-      // if it is game over, set message "Game Over!"
-      setGameText("Game Over!", 0, 0, 8, 2);
-    }
-
-    // set lines cleared
-    String message = "" + tetris.linesCleared;
-    setGameText(message, 8, 0, 2, 2);
-
     initHeader();
-    updateGrid();
+    initGrid();
 
 
     /////////////////////////////////////////////
@@ -171,9 +162,23 @@ public class GuiTetris extends Application {
                 }
             }
         }
+
+        // Set Announcement Text
+        String message = tetris.isGameover ? "Game Over!" : "Tetris";
+        announcement.setText(message);
+        announcement.setFont(new Font(20));
+        pane.add(announcement, 0, 0, 8, 2);
+        pane.setHalignment(announcement, HPos.CENTER);
+
+        // Set linesCleared Text
+        linesCleared.setText(String.valueOf(tetris.linesCleared));
+        linesCleared.setFont(new Font(20));
+        pane.add(linesCleared, 8, 0, 2, 2);
+        pane.setHalignment(linesCleared, HPos.CENTER);
+
     }
 
-    private void updateGrid() {
+    private void initGrid() {
       char[][] grid = new char[20][10];
 
       for (int i = 0; i < this.tetris.grid.length; i++) {
@@ -187,8 +192,6 @@ public class GuiTetris extends Application {
           for (int j = 0; j < activePiece.tiles[0].length; j++) {
               if (activePiece.tiles[i][j] == 1) {
                   grid[i + activePiece.rowOffset][j + activePiece.colOffset] = activePiece.shape;
-                  // TODO -- Print
-                  // System.out.println("i: " + i + "j: " + j);
               }
           }
       }
@@ -227,25 +230,150 @@ public class GuiTetris extends Application {
       }
     }
 
-    /**
-     * Setter method that sets the text's message, fontname, fontsize, color info.
-     * @param message - String type, message to put in
-     * @param colstart
-     * @param rowstart
-     * @param colspan
-     * @param rowspan
-     */
-    private void setGameText(String message, int colstart, int rowstart, int colspan, int rowspan) {
-        Text text = new Text();
-        // set the message
-        text.setText(message);
-        // set the font, font size, color
-        text.setFont(Font.font("Consolas", FontWeight.BOLD, 30));
-        // set the message into the pane according to the location
-        pane.add(text, colstart, rowstart, colspan, rowspan);
-        // set it to the center
-        pane.setHalignment(text, HPos.CENTER);
+    private void updateHeader() {
+        for (int i = 0; i < rectNext.length; i++) {
+            for (int j = 0; j < rectNext[0].length; j++) {
+                Piece nextPiece = new Piece(tetris.nextPiece);
+                char shape = nextPiece.shape;
+                switch (shape) {
+                    case 'O':
+                        if (i >= 1 && i <= 2 && j >= 1 && j <= 2) {
+                            this.rectNext[i][j].setFill(Color.RED);
+                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        } else {
+                            this.rectNext[i][j].setFill(Color.WHITE);
+                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        }
+                        break;
+                    case 'I':
+                        if (i == 1 && j <= 3) {
+                            this.rectNext[i][j].setFill(Color.YELLOW);
+                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        } else {
+                            this.rectNext[i][j].setFill(Color.WHITE);
+                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        }
+                        break;
+                    case 'S':
+                        if ((i == 1 && (j == 1 || j == 2)) || (i == 2 && (j == 0 || j == 1))) {
+                            this.rectNext[i][j].setFill(Color.CYAN);
+                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        } else {
+                            this.rectNext[i][j].setFill(Color.WHITE);
+                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        }
+                        break;
+                    case 'Z':
+                        if ((i == 1 && (j == 1 || j == 2)) || (i == 2 && (j == 2 || j == 3))) {
+                            this.rectNext[i][j].setFill(Color.BLUE);
+                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        } else {
+                            this.rectNext[i][j].setFill(Color.WHITE);
+                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        }
+                        break;
+                    case 'J':
+                        if ((i == 1 && j <= 2) || (i == 2 && j == 2)) {
+                            this.rectNext[i][j].setFill(Color.MAGENTA);
+                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        } else {
+                            this.rectNext[i][j] .setFill(Color.WHITE);
+                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        }
+                        break;
+                    case 'L':
+                        if ((i == 1 && (j >= 1 && j <= 3)) || (i == 2 && j == 1)) {
+                            this.rectNext[i][j].setFill(Color.PINK);
+                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        } else {
+                            this.rectNext[i][j].setFill(Color.WHITE);
+                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        }
+                        break;
+                    case 'T':
+                        if ((i == 1 && (j >= 1 && j <= 3)) || (i == 2 && j == 2)) {
+                            this.rectNext[i][j].setFill(Color.ORANGE);
+                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        } else {
+                            this.rectNext[i][j].setFill(Color.WHITE);
+                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        }
+                        break;
+                    default:
+                        this.rectNext[i][j].setFill(Color.WHITE);
+                        this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        break;
+                }
+            }
+        }
+
+        // Set Announcement Text
+        String message = tetris.isGameover ? "Game Over!" : "Tetris";
+        announcement.setText(message);
+        announcement.setFont(new Font(20));
+        pane.add(announcement, 0, 0, 8, 2);
+        pane.setHalignment(announcement, HPos.CENTER);
+
+        // Set linesCleared Text
+        linesCleared.setText(String.valueOf(tetris.linesCleared));
+        linesCleared.setFont(new Font(20));
+        pane.add(linesCleared, 8, 0, 2, 2);
+        pane.setHalignment(linesCleared, HPos.CENTER);
+
     }
+
+    private void updateGrid() {
+        char[][] grid = new char[20][10];
+        for (int i = 0; i < this.tetris.grid.length; i++) {
+            for (int j = 0; j < this.tetris.grid[0].length; j++) {
+                grid[i][j] = this.tetris.grid[i][j];
+            }
+        }
+
+        Piece activePiece = new Piece(tetris.activePiece);
+        for (int i = 0; i < activePiece.tiles.length; i++) {
+            for (int j = 0; j < activePiece.tiles[0].length; j++) {
+                if (activePiece.tiles[i][j] == 1) {
+                    grid[i + activePiece.rowOffset][j + activePiece.colOffset] = activePiece.shape;
+                }
+            }
+        }
+
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                char shape = grid[i][j];
+                switch (shape) {
+                    case 'O':
+                        this.rectGrid[i][j].setFill(Color.RED);
+                        break;
+                    case 'I':
+                        this.rectGrid[i][j].setFill(Color.YELLOW);
+                        break;
+                    case 'S':
+                        this.rectGrid[i][j].setFill(Color.CYAN);
+                        break;
+                    case 'Z':
+                        this.rectGrid[i][j].setFill(Color.BLUE);
+                        break;
+                    case 'J':
+                        this.rectGrid[i][j].setFill(Color.MAGENTA);
+                        break;
+                    case 'L':
+                        this.rectGrid[i][j].setFill(Color.PINK);
+                        break;
+                    case 'T':
+                        this.rectGrid[i][j].setFill(Color.ORANGE);
+                        break;
+                    default:
+                        this.rectGrid[i][j].setFill(Color.GRAY);
+                        break;
+                }
+                this.pane.add(this.rectGrid[i][j], j, i + 6);
+            }
+        }
+    }
+
+
 
   /////////////////////////////////
   ///     Key Event Handler     ///
@@ -282,6 +410,8 @@ public class GuiTetris extends Application {
           }
         }
       }
+      updateHeader();
+      updateGrid();
     }
 
   }
