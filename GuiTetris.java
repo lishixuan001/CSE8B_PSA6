@@ -349,7 +349,7 @@ public class GuiTetris extends Application {
   private static final int[] paneGridOffset = {0, 6};
   private static final int[] paneNextOffset = {6, 2};
   private static final int[] headerPosition = {0, 0, 8, 2};
-  private static final int[] scorePosition = {8 0, 2, 2};
+  private static final int[] scorePosition = {8, 0, 2, 2};
 
   /* Pane Attributes */
   private static final int PADDING = 10;
