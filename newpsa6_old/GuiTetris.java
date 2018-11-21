@@ -20,6 +20,7 @@ import javafx.scene.input.*;
 import javafx.scene.text.*;
 import javafx.geometry.*;
 
+import java.awt.*;
 import java.util.*;
 import java.io.*;
 import javafx.scene.media.*;
@@ -69,6 +70,7 @@ public class GuiTetris extends Application {
     String message = "" + tetris.linesCleared;
     setGameText(message, 8, 0, 2, 2);
 
+    initHeader();
     initRectGrid();
 
 
@@ -93,6 +95,45 @@ public class GuiTetris extends Application {
   /////////////////////////////////
   ///   Private Helper Method   ///
   /////////////////////////////////
+
+    private void initHeader() {
+        Piece nextPiece = new Piece(tetris.nextPiece);
+        char shape = nextPiece.shape;
+        Color color;
+        switch (shape) {
+            case 'O':
+                color = Color.RED;
+                break;
+            case 'I':
+                color = Color.YELLOW;
+                break;
+            case 'S':
+                color = Color.CYAN;
+                break;
+            case 'Z':
+                color = Color.BLUE;
+                break;
+            case 'J':
+                color = Color.MAGENTA;
+                break;
+            case 'L':
+                color = Color.PINK;
+                break;
+            case 'T':
+                color = Color.ORANGE;
+                break;
+            default:
+                color = Color.WHITE;
+                break;
+        }
+        for (int i = 0; i < nextPiece.tiles.length; i++) {
+            for (int j = 0; j < nextPiece.tiles[0].length; j++) {
+                this.rectNext[i][j] = new Rectangle(size, size, color);
+                this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+            }
+        }
+    }
+
     private void initRectGrid() {
       char[][] grid = new char[20][10];
 
@@ -107,7 +148,8 @@ public class GuiTetris extends Application {
           for (int j = 0; j < activePiece.tiles[0].length; j++) {
               if (activePiece.tiles[i][j] == 1) {
                   grid[i + activePiece.rowOffset][j + activePiece.colOffset] = activePiece.shape;
-                  System.out.println("i: " + i + "j: " + j);
+                  // TODO -- Print
+                  // System.out.println("i: " + i + "j: " + j);
               }
           }
       }
