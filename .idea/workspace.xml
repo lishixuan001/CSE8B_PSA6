@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a44f503-5ad6-4dc3-888d-29b4d56201b4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/GuiTetris.java" afterPath="$PROJECT_DIR$/GuiTetris.java" />
       <change beforePath="$PROJECT_DIR$/newpsa6_old/GuiTetris.java" afterPath="$PROJECT_DIR$/newpsa6_old/GuiTetris.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -18,8 +17,8 @@
       <file leaf-file-name="GuiTetris.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/newpsa6_old/GuiTetris.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="479">
-              <caret line="257" column="3" lean-forward="true" selection-start-line="257" selection-start-column="3" selection-end-line="257" selection-end-column="3" />
+            <state relative-caret-position="264">
+              <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -40,8 +39,8 @@
       <file leaf-file-name="GuiTetris.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GuiTetris.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="404">
-              <caret line="85" column="16" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="375" selection-end-column="0" />
+            <state relative-caret-position="24">
+              <caret line="222" column="0" lean-forward="false" selection-start-line="222" selection-start-column="0" selection-end-line="240" selection-end-column="3" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -264,12 +263,12 @@
       <option name="presentableId" value="Default" />
       <updated>1542753191653</updated>
       <workItem from="1542753192943" duration="784000" />
-      <workItem from="1542754360222" duration="16008000" />
+      <workItem from="1542754360222" duration="16117000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16792000" />
+    <option name="totallyTimeSpent" value="16901000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -285,7 +284,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Style Checker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3292232" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17167382" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -423,8 +422,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GuiTetris.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="85" column="16" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="375" selection-end-column="0" />
+        <state relative-caret-position="24">
+          <caret line="222" column="0" lean-forward="false" selection-start-line="222" selection-start-column="0" selection-end-line="240" selection-end-column="3" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
@@ -434,8 +433,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/newpsa6_old/GuiTetris.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="257" column="3" lean-forward="true" selection-start-line="257" selection-start-column="3" selection-end-line="257" selection-end-column="3" />
+        <state relative-caret-position="264">
+          <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

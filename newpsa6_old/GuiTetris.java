@@ -20,7 +20,6 @@ import javafx.scene.input.*;
 import javafx.scene.text.*;
 import javafx.geometry.*;
 
-import java.awt.*;
 import java.util.*;
 import java.io.*;
 import javafx.scene.media.*;
@@ -143,7 +142,25 @@ public class GuiTetris extends Application {
       }
     }
 
-
+    /**
+     * Setter method that sets the text's message, fontname, fontsize, color info.
+     * @param message - String type, message to put in
+     * @param colstart
+     * @param rowstart
+     * @param colspan
+     * @param rowspan
+     */
+    private void setGameText(String message, int colstart, int rowstart, int colspan, int rowspan) {
+        Text text = new Text();
+        // set the message
+        text.setText(message);
+        // set the font, font size, color
+        text.setFont(Font.font("Consolas", FontWeight.BOLD, 30));
+        // set the message into the pane according to the location
+        pane.add(text, colstart, rowstart, colspan, rowspan);
+        // set it to the center
+        pane.setHalignment(text, HPos.CENTER);
+    }
 
   /////////////////////////////////
   ///     Key Event Handler     ///
