@@ -20,6 +20,7 @@ import javafx.scene.input.*;
 import javafx.scene.text.*;
 import javafx.geometry.*;
 
+import java.awt.*;
 import java.util.*;
 import java.io.*;
 import javafx.scene.media.*;
@@ -47,7 +48,7 @@ public class GuiTetris extends Application {
 
     // set lines cleared
     String message = Integer.toString(tetris.linesCleared);
-    setGameText(message, headerPosition);
+    setGameText(message, scorePosition);
 
     // draw the default background
     drawBackground();
@@ -87,9 +88,9 @@ public class GuiTetris extends Application {
       for (int j = 0; j < windowWidth; j++) {
         Rectangle rectangle;
         if (i < headerLength) {
-          rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorHeaderBackground);
+          rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.WHITE);
         } else {
-          rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorGridBackground);
+          rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.GRAY);
         }
         this.pane.add(rectangle, j, i);
       }
@@ -107,21 +108,21 @@ public class GuiTetris extends Application {
         Rectangle rectangle;
         switch (shape) {
           case 'O':
-            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeO);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.RED);
           case 'I':
-            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeI);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.YELLOW);
           case 'S':
-            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeS);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.CYAN);
           case 'Z':
-            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeZ);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.BLUE);
           case 'J':
-            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeJ);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.MAGENTA);
           case 'L':
-            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeL);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.PINK);
           case 'T':
-            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeT);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.ORANGE);
           default:
-            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorGridBackground);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.GRAY);
         }
         this.pane.add(rectangle, j + paneGridOffset[0], i + paneGridOffset[1]);
       }
@@ -141,21 +142,21 @@ public class GuiTetris extends Application {
       for (int j = 0; j < tiles[0].length; j++) {
         switch (shape) {
           case 'O':
-            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeO);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.RED);
           case 'I':
-            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeI);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.YELLOW);
           case 'S':
-            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeS);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.CYAN);
           case 'Z':
-            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeZ);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.BLUE);
           case 'J':
-            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeJ);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.MAGENTA);
           case 'L':
-            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeL);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.PINK);
           case 'T':
-            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeT);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.ORANGE);
           default:
-            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorHeaderBackground);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.WHITE);
         }
         if (tiles[i][j] == 1) {
           pane.add(rectangle, j + paneNextOffset[0], i + paneNextOffset[1]);
@@ -177,21 +178,21 @@ public class GuiTetris extends Application {
       for (int j = 0; j < tiles[0].length; j++) {
         switch (shape) {
           case 'O':
-            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeO);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.RED);
           case 'I':
-            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeI);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.YELLOW);
           case 'S':
-            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeS);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.CYAN);
           case 'Z':
-            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeZ);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.BLUE);
           case 'J':
-            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeJ);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.MAGENTA);
           case 'L':
-            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeL);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.PINK);
           case 'T':
-            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeT);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.ORANGE);
           default:
-            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorGridBackground);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.GRAY);
         }
         this.pane.add(rectangle, j + colOffset + paneGridOffset[0], i + rowOffset + paneGridOffset[1]);
       }
@@ -338,21 +339,16 @@ public class GuiTetris extends Application {
   /* Key handler */
   private MyKeyHandler myKeyHandler;
 
+  /* Background section barrier edge */
+  private static final int windowWidth = 10;
+  private static final int windowLength = 26;
+  private static final int headerLength = 6;
+
   /* Positions/Offsets on Pane -- {colOffset, rowOffset}*/
   private static final int[] paneGridOffset = {0, 6};
   private static final int[] paneNextOffset = {6, 2};
   private static final int[] headerPosition = {0, 0, 8, 2};
-
-  /* Color of Pieces */
-  private static final Color colorTypeO = Color.RED;
-  private static final Color colorTypeI = Color.YELLOW;
-  private static final Color colorTypeS = Color.CYAN;
-  private static final Color colorTypeZ = Color.BLUE;
-  private static final Color colorTypeJ = Color.MAGENTA;
-  private static final Color colorTypeL = Color.PINK;
-  private static final Color colorTypeT = Color.ORANGE;
-  private static final Color colorGridBackground = Color.GRAY;
-  private static final Color colorHeaderBackground = Color.GRAY;
+  private static final int[] scorePosition = {0, 0, 2, 2};
 
   /* Pane Attributes */
   private static final int PADDING = 10;

@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a44f503-5ad6-4dc3-888d-29b4d56201b4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/GuiTetris.java" afterPath="$PROJECT_DIR$/GuiTetris.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -31,7 +30,7 @@
             <entry file="file://$PROJECT_DIR$/GuiTetris.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="5222">
-                  <caret line="337" column="19" lean-forward="true" selection-start-line="337" selection-start-column="19" selection-end-line="337" selection-end-column="19" />
+                  <caret line="338" column="19" lean-forward="true" selection-start-line="338" selection-start-column="19" selection-end-line="338" selection-end-column="19" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -66,8 +65,8 @@
           <file leaf-file-name="GuiTetris.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/GuiTetris.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="393">
-                  <caret line="52" column="4" lean-forward="true" selection-start-line="52" selection-start-column="4" selection-end-line="52" selection-end-column="4" />
+                <state relative-caret-position="389">
+                  <caret line="350" column="58" lean-forward="true" selection-start-line="350" selection-start-column="58" selection-end-line="350" selection-end-column="58" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -267,12 +266,12 @@
       <option name="presentableId" value="Default" />
       <updated>1542753191653</updated>
       <workItem from="1542753192943" duration="784000" />
-      <workItem from="1542754360222" duration="10205000" />
+      <workItem from="1542754360222" duration="10541000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10989000" />
+    <option name="totallyTimeSpent" value="11325000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -379,8 +378,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GuiTetris.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="52" column="4" lean-forward="true" selection-start-line="52" selection-start-column="4" selection-end-line="52" selection-end-column="4" />
+        <state relative-caret-position="389">
+          <caret line="350" column="58" lean-forward="true" selection-start-line="350" selection-start-column="58" selection-end-line="350" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
