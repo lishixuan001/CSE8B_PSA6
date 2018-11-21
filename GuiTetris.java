@@ -52,11 +52,11 @@ public class GuiTetris extends Application {
     // draw the default background
     // drawBackground();
     // draw the next Piece
-    // drawNext();
+    drawNext();
     // draw the backgroud
     drawGrid();
     // draw the active Piece
-    // drawActive();
+    drawActive();
 
 
     /////////////////////////////////////////////
@@ -73,7 +73,6 @@ public class GuiTetris extends Application {
     scene.setOnKeyPressed(myKeyHandler);
     MoveDownWorker worker = new MoveDownWorker();
     worker.start();
-
   }
 
 
@@ -83,19 +82,19 @@ public class GuiTetris extends Application {
 
   /**
    * Draw the background of the pane */
-  private void drawBackground() {
-    for (int i = 0; i < windowLength; i++) {
-      for (int j = 0; j < windowWidth; j++) {
-        Rectangle rectangle;
-        if (i < headerLength) {
-          rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorHeaderBackground);
-        } else {
-          rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorGridBackground);
-        }
-        this.pane.add(rectangle, j, i);
-      }
-    }
-  }
+//  private void drawBackground() {
+//    for (int i = 0; i < windowLength; i++) {
+//      for (int j = 0; j < windowWidth; j++) {
+//        Rectangle rectangle;
+//        if (i < headerLength) {
+//          rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorHeaderBackground);
+//        } else {
+//          rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorGridBackground);
+//        }
+//        this.pane.add(rectangle, j, i);
+//      }
+//    }
+//  }
 
   /**
    * draw the background pane and contain the newest changes
@@ -168,18 +167,36 @@ public class GuiTetris extends Application {
   /**
    * Draw the active piece in the playground
    */
-//  private void drawActive() {
-//    int[][] tiles = this.tetris.activePiece.tiles;
-//    char shape = this.tetris.activePiece.shape;
-//    int rowOffset = this.tetris.activePiece.rowOffset;
-//    int colOffset = this.tetris.activePiece.colOffset;
-//    Rectangle rectangle = getRectangleByShape(shape);
-//    for (int i = 0; i < tiles.length; i++) {
-//      for (int j = 0; j < tiles[0].length; j++) {
-//        this.pane.add(rectangle, j + colOffset + paneGridOffset[0], i + rowOffset + paneGridOffset[1]);
-//      }
-//    }
-//  }
+  private void drawActive() {
+    int[][] tiles = this.tetris.activePiece.tiles;
+    char shape = this.tetris.activePiece.shape;
+    int rowOffset = this.tetris.activePiece.rowOffset;
+    int colOffset = this.tetris.activePiece.colOffset;
+    Rectangle rectangle;
+    switch (shape) {
+      case 'O':
+        rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeO);
+      case 'I':
+        rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeI);
+      case 'S':
+        rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeS);
+      case 'Z':
+        rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeZ);
+      case 'J':
+        rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeJ);
+      case 'L':
+        rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeL);
+      case 'T':
+        rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeT);
+      default:
+        rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorGridBackground);
+    }
+    for (int i = 0; i < tiles.length; i++) {
+      for (int j = 0; j < tiles[0].length; j++) {
+        this.pane.add(rectangle, j + colOffset + paneGridOffset[0], i + rowOffset + paneGridOffset[1]);
+      }
+    }
+  }
 
 
   /**
