@@ -20,7 +20,6 @@ import javafx.scene.input.*;
 import javafx.scene.text.*;
 import javafx.geometry.*;
 
-import java.awt.*;
 import java.util.*;
 import java.io.*;
 import javafx.scene.media.*;
