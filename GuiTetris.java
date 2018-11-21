@@ -19,7 +19,6 @@ import javafx.event.*;
 import javafx.scene.input.*;
 import javafx.scene.text.*;
 import javafx.geometry.*;
-
 import java.util.*;
 import java.io.*;
 import javafx.scene.media.*;
