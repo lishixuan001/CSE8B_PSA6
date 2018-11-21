@@ -97,38 +97,36 @@ public class GuiTetris extends Application {
   /////////////////////////////////
 
     private void initHeader() {
-        Piece nextPiece = new Piece(tetris.nextPiece);
-        char shape = nextPiece.shape;
-        Color color;
-        switch (shape) {
-            case 'O':
-                color = Color.RED;
-                break;
-            case 'I':
-                color = Color.YELLOW;
-                break;
-            case 'S':
-                color = Color.CYAN;
-                break;
-            case 'Z':
-                color = Color.BLUE;
-                break;
-            case 'J':
-                color = Color.MAGENTA;
-                break;
-            case 'L':
-                color = Color.PINK;
-                break;
-            case 'T':
-                color = Color.ORANGE;
-                break;
-            default:
-                color = Color.WHITE;
-                break;
-        }
         for (int i = 0; i < rectNext.length; i++) {
             for (int j = 0; j < rectNext[0].length; j++) {
-                this.rectNext[i][j] = new Rectangle(size, size, Color.RED);
+                Piece nextPiece = new Piece(tetris.nextPiece);
+                char shape = nextPiece.shape;
+                switch (shape) {
+                    case 'O':
+                        this.rectNext[i][j] = new Rectangle(size, size, Color.RED);
+                        break;
+                    case 'I':
+                        this.rectNext[i][j] = new Rectangle(size, size, Color.YELLOW);
+                        break;
+                    case 'S':
+                        this.rectNext[i][j] = new Rectangle(size, size, Color.CYAN);
+                        break;
+                    case 'Z':
+                        this.rectNext[i][j] = new Rectangle(size, size, Color.BLUE);
+                        break;
+                    case 'J':
+                        this.rectNext[i][j] = new Rectangle(size, size, Color.MAGENTA);
+                        break;
+                    case 'L':
+                        this.rectNext[i][j] = new Rectangle(size, size, Color.PINK);
+                        break;
+                    case 'T':
+                        this.rectNext[i][j] = new Rectangle(size, size, Color.ORANGE);
+                        break;
+                    default:
+                        this.rectNext[i][j] = new Rectangle(size, size, Color.GRAY);
+                        break;
+                }
                 this.pane.add(this.rectNext[i][j], j + 6, i + 2);
             }
         }
