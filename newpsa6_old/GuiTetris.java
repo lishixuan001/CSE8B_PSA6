@@ -294,15 +294,9 @@ public class GuiTetris extends Application {
         // Set Announcement Text
         String message = tetris.isGameover ? "Game Over!" : "Tetris";
         announcement.setText(message);
-        announcement.setFont(new Font(20));
-        pane.add(announcement, 0, 0, 8, 2);
-        pane.setHalignment(announcement, HPos.CENTER);
 
         // Set linesCleared Text
         linesCleared.setText(String.valueOf(tetris.linesCleared));
-        linesCleared.setFont(new Font(20));
-        pane.add(linesCleared, 8, 0, 2, 2);
-        pane.setHalignment(linesCleared, HPos.CENTER);
 
     }
 
