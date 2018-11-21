@@ -61,6 +61,7 @@ public class GuiTetris extends Application {
 
     initHeader();
     initGrid();
+    initHold();
 
 
     /////////////////////////////////////////////
@@ -77,7 +78,6 @@ public class GuiTetris extends Application {
     scene.setOnKeyPressed(myKeyHandler);
     MoveDownWorker worker = new MoveDownWorker();
     worker.start();
-
   }
 
 
@@ -229,6 +229,89 @@ public class GuiTetris extends Application {
       }
     }
 
+    private void initHold() {
+        for (int i = 0; i < rectHold.length; i++) {
+            for (int j = 0; j < rectHold[0].length; j++) {
+                if (tetris.storedPiece == null) {
+                    this.rectHold[i][j] = new Rectangle(size, size, Color.WHITE);
+                    this.pane.add(this.rectHold[i][j], j, i + 2);
+                } else {
+                    Piece holdPiece = new Piece(tetris.storedPiece);
+                    char shape = holdPiece.shape;
+                    switch (shape) {
+                        case 'O':
+                            if (i >= 1 && i <= 2 && j >= 1 && j <= 2) {
+                                this.rectHold[i][j] = new Rectangle(size, size, Color.RED);
+                                this.pane.add(this.rectHold[i][j], j, i + 2);
+                            } else {
+                                this.rectNext[i][j] = new Rectangle(size, size, Color.WHITE);
+                                this.pane.add(this.rectHold[i][j], j, i + 2);
+                            }
+                            break;
+                        case 'I':
+                            if (i == 1 && j <= 3) {
+                                this.rectHold[i][j] = new Rectangle(size, size, Color.YELLOW);
+                                this.pane.add(this.rectHold[i][j], j, i + 2);
+                            } else {
+                                this.rectHold[i][j] = new Rectangle(size, size, Color.WHITE);
+                                this.pane.add(this.rectHold[i][j], j, i + 2);
+                            }
+                            break;
+                        case 'S':
+                            if ((i == 1 && (j == 1 || j == 2)) || (i == 2 && (j == 0 || j == 1))) {
+                                this.rectHold[i][j] = new Rectangle(size, size, Color.CYAN);
+                                this.pane.add(this.rectHold[i][j], j, i + 2);
+                            } else {
+                                this.rectHold[i][j] = new Rectangle(size, size, Color.WHITE);
+                                this.pane.add(this.rectHold[i][j], j, i + 2);
+                            }
+                            break;
+                        case 'Z':
+                            if ((i == 1 && (j == 1 || j == 2)) || (i == 2 && (j == 2 || j == 3))) {
+                                this.rectHold[i][j] = new Rectangle(size, size, Color.BLUE);
+                                this.pane.add(this.rectHold[i][j], j, i + 2);
+                            } else {
+                                this.rectHold[i][j] = new Rectangle(size, size, Color.WHITE);
+                                this.pane.add(this.rectHold[i][j], j, i + 2);
+                            }
+                            break;
+                        case 'J':
+                            if ((i == 1 && j <= 2) || (i == 2 && j == 2)) {
+                                this.rectHold[i][j] = new Rectangle(size, size, Color.MAGENTA);
+                                this.pane.add(this.rectHold[i][j], j, i + 2);
+                            } else {
+                                this.rectHold[i][j] = new Rectangle(size, size, Color.WHITE);
+                                this.pane.add(this.rectHold[i][j], j, i + 2);
+                            }
+                            break;
+                        case 'L':
+                            if ((i == 1 && (j >= 1 && j <= 3)) || (i == 2 && j == 1)) {
+                                this.rectHold[i][j] = new Rectangle(size, size, Color.PINK);
+                                this.pane.add(this.rectHold[i][j], j, i + 2);
+                            } else {
+                                this.rectHold[i][j] = new Rectangle(size, size, Color.WHITE);
+                                this.pane.add(this.rectHold[i][j], j, i + 2);
+                            }
+                            break;
+                        case 'T':
+                            if ((i == 1 && (j >= 1 && j <= 3)) || (i == 2 && j == 2)) {
+                                this.rectHold[i][j] = new Rectangle(size, size, Color.ORANGE);
+                                this.pane.add(this.rectHold[i][j], j, i + 2);
+                            } else {
+                                this.rectHold[i][j] = new Rectangle(size, size, Color.WHITE);
+                                this.pane.add(this.rectHold[i][j], j, i + 2);
+                            }
+                            break;
+                        default:
+                            this.rectHold[i][j] = new Rectangle(size, size, Color.WHITE);
+                            this.pane.add(this.rectHold[i][j], j, i + 2);
+                            break;
+                    }
+                }
+            }
+        }
+    }
+
     private void updateHeader() {
         for (int i = 0; i < rectNext.length; i++) {
             for (int j = 0; j < rectNext[0].length; j++) {
@@ -350,7 +433,72 @@ public class GuiTetris extends Application {
         }
     }
 
-
+    private void updateHold() {
+        for (int i = 0; i < rectHold.length; i++) {
+            for (int j = 0; j < rectHold[0].length; j++) {
+                if (tetris.storedPiece == null) {
+                    this.rectHold[i][j].setFill(Color.WHITE);
+                } else {
+                    Piece holdPiece = new Piece(tetris.storedPiece);
+                    char shape = holdPiece.shape;
+                    switch (shape) {
+                        case 'O':
+                            if (i >= 1 && i <= 2 && j >= 1 && j <= 2) {
+                                this.rectHold[i][j].setFill(Color.RED);
+                            } else {
+                                this.rectNext[i][j].setFill(Color.WHITE);
+                            }
+                            break;
+                        case 'I':
+                            if (i == 1 && j <= 3) {
+                                this.rectHold[i][j].setFill(Color.YELLOW);
+                            } else {
+                                this.rectHold[i][j].setFill(Color.WHITE);
+                            }
+                            break;
+                        case 'S':
+                            if ((i == 1 && (j == 1 || j == 2)) || (i == 2 && (j == 0 || j == 1))) {
+                                this.rectHold[i][j].setFill(Color.CYAN);
+                            } else {
+                                this.rectHold[i][j].setFill(Color.WHITE);
+                            }
+                            break;
+                        case 'Z':
+                            if ((i == 1 && (j == 1 || j == 2)) || (i == 2 && (j == 2 || j == 3))) {
+                                this.rectHold[i][j].setFill(Color.BLUE);
+                            } else {
+                                this.rectHold[i][j].setFill(Color.WHITE);
+                            }
+                            break;
+                        case 'J':
+                            if ((i == 1 && j <= 2) || (i == 2 && j == 2)) {
+                                this.rectHold[i][j].setFill(Color.MAGENTA);
+                            } else {
+                                this.rectHold[i][j].setFill(Color.WHITE);
+                            }
+                            break;
+                        case 'L':
+                            if ((i == 1 && (j >= 1 && j <= 3)) || (i == 2 && j == 1)) {
+                                this.rectHold[i][j].setFill(Color.PINK);
+                            } else {
+                                this.rectHold[i][j].setFill(Color.WHITE);
+                            }
+                            break;
+                        case 'T':
+                            if ((i == 1 && (j >= 1 && j <= 3)) || (i == 2 && j == 2)) {
+                                this.rectHold[i][j].setFill(Color.ORANGE);
+                            } else {
+                                this.rectHold[i][j].setFill(Color.WHITE);
+                            }
+                            break;
+                        default:
+                            this.rectHold[i][j].setFill(Color.WHITE);
+                            break;
+                    }
+                }
+            }
+        }
+    }
 
   /////////////////////////////////
   ///     Key Event Handler     ///
@@ -389,6 +537,7 @@ public class GuiTetris extends Application {
       }
       updateHeader();
       updateGrid();
+      updateHold();
     }
 
   }
