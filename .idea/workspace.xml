@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7a44f503-5ad6-4dc3-888d-29b4d56201b4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/newpsa6_old/GuiTetris.java" afterPath="$PROJECT_DIR$/newpsa6_old/GuiTetris.java" />
-    </list>
+    <list default="true" id="7a44f503-5ad6-4dc3-888d-29b4d56201b4" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,11 +17,9 @@
           <file leaf-file-name="GuiTetris.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/newpsa6_old/GuiTetris.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="291">
-                  <caret line="407" column="19" lean-forward="true" selection-start-line="407" selection-start-column="19" selection-end-line="407" selection-end-column="19" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
+                <state relative-caret-position="312">
+                  <caret line="22" column="19" lean-forward="true" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -283,12 +279,12 @@
       <option name="presentableId" value="Default" />
       <updated>1542753191653</updated>
       <workItem from="1542753192943" duration="784000" />
-      <workItem from="1542754360222" duration="20002000" />
+      <workItem from="1542754360222" duration="20036000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20786000" />
+    <option name="totallyTimeSpent" value="20820000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -453,11 +449,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/newpsa6_old/GuiTetris.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="407" column="19" lean-forward="true" selection-start-line="407" selection-start-column="19" selection-end-line="407" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="312">
+          <caret line="22" column="19" lean-forward="true" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
