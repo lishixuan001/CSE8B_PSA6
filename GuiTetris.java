@@ -267,6 +267,7 @@ public class GuiTetris extends Application {
         }
         if (e.getCode().equals(KeyCode.DOWN)) {
           tetris.move(Direction.DOWN);
+          System.out.println("HERE");
         }
         if (e.getCode().equals(KeyCode.LEFT)) {
           tetris.move(Direction.LEFT);
@@ -365,15 +366,15 @@ public class GuiTetris extends Application {
   private MyKeyHandler myKeyHandler;
 
   /* Background section barrier edge */
-  private static final int windowWidth = 10;
-  private static final int windowLength = 26;
-  private static final int headerLength = 6;
+  private int windowWidth = 10;
+  private int windowLength = 26;
+  private int headerLength = 6;
 
   /* Positions/Offsets on Pane -- {colOffset, rowOffset}*/
-  private static final int[] paneGridOffset = {0, 6};
-  private static final int[] paneNextOffset = {6, 2};
-  private static final int[] headerPosition = {0, 0, 8, 2};
-  private static final int[] scorePosition = {8, 0, 2, 2};
+  private int[] paneGridOffset = {0, 6};
+  private int[] paneNextOffset = {6, 2};
+  private int[] headerPosition = {0, 0, 8, 2};
+  private int[] scorePosition = {8, 0, 2, 2};
 
   /* Pane Attributes */
   private static final int PADDING = 10;
