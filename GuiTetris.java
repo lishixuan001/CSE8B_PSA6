@@ -40,8 +40,6 @@ public class GuiTetris extends Application {
     pane.setHgap(TILE_GAP); 
     pane.setVgap(TILE_GAP);
 
-    System.out.println("NEWSTART");
-
     // check if it is already game over
     if(!tetris.isGameover){
       // if it is not game over, set message "Tetris"

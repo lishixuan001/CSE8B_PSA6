@@ -66,6 +66,11 @@ public class GuiTetris extends Application {
     pane.setVgap(TILE_GAP);
 
     // TODO initialize GUI elements here
+
+    // TODO
+    System.out.println("NEWSTART");
+
+
     // check if it is already game over
     if(!tetris.isGameover){
       // if it is not game over, set message "Tetris"
@@ -421,6 +426,10 @@ public class GuiTetris extends Application {
         }
         if (e.getCode().equals(KeyCode.DOWN)) {
           tetris.move(Direction.DOWN);
+
+          // TODO
+          System.out.println("HERE");
+
         }
         if (e.getCode().equals(KeyCode.LEFT)) {
           tetris.move(Direction.LEFT);
