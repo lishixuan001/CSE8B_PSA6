@@ -292,15 +292,12 @@ public class GuiTetris extends Application {
                     case 'T':
                         if ((i == 1 && (j >= 1 && j <= 3)) || (i == 2 && j == 2)) {
                             this.rectNext[i][j].setFill(Color.ORANGE);
-                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
                         } else {
                             this.rectNext[i][j].setFill(Color.WHITE);
-                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
                         }
                         break;
                     default:
                         this.rectNext[i][j].setFill(Color.WHITE);
-                        this.pane.add(this.rectNext[i][j], j + 6, i + 2);
                         break;
                 }
             }
@@ -367,7 +364,6 @@ public class GuiTetris extends Application {
                         this.rectGrid[i][j].setFill(Color.GRAY);
                         break;
                 }
-                this.pane.add(this.rectGrid[i][j], j, i + 6);
             }
         }
     }
@@ -409,8 +405,8 @@ public class GuiTetris extends Application {
           }
         }
       }
-      updateHeader();
-      updateGrid();
+      initHeader();
+      initGrid();
     }
 
   }
