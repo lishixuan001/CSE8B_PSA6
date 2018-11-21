@@ -428,11 +428,14 @@ public class GuiTetris extends Application {
           tetris.move(Direction.DOWN);
 
           // TODO
-          System.out.println("HERE");
+          System.out.println("Press Down");
 
         }
         if (e.getCode().equals(KeyCode.LEFT)) {
           tetris.move(Direction.LEFT);
+
+          // TODO
+          System.out.println("Press Left");
         }
         if (e.getCode().equals(KeyCode.RIGHT)) {
           tetris.move(Direction.RIGHT);
@@ -449,6 +452,16 @@ public class GuiTetris extends Application {
         }
       }
       updateGrid();
+      // draw the next Piece
+      drawNext();
+      // deep copy the grid
+      updateGrid();
+      // draw the active Piece
+      drawActive();
+      // draw the backgroud
+      drawBackground();
+      // draw the hold
+      drawHold();
     }
 
   }
