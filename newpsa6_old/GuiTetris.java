@@ -144,41 +144,6 @@ public class GuiTetris extends Application {
     }
 
 
-  /**
-   * Setter method that sets the text's message, fontname, fontsize, color info.
-   * @param message - String type, message to put in
-   * @param colstart
-   * @param rowstart
-   * @param colspan
-   * @param rowspan
-   */
-  private void setGameText(String message, int colstart, int rowstart, int colspan, int rowspan) {
-    Text text = new Text();
-    // set the message
-    text.setText(message);
-    // set the font, font size, color
-    text.setFont(Font.font("Consolas", FontWeight.BOLD, 30));
-    // set the message into the pane according to the location
-    pane.add(text, colstart, rowstart, colspan, rowspan);
-    // set it to the center
-    pane.setHalignment(text, HPos.CENTER);
-  }
-
-  /**
-   * Author: Yiwen Li
-   * private method helper: update method of grid
-   * only update the fourth part of the grid
-   */
-  private void updateGrid() {
-    // Deep copy the grid in tetris
-    for(int i = 0; i < this.backGrid.length; i++) {
-      for(int j = 0; j < this.backGrid[0].length; j++) {
-        // copy each element
-        this.backGrid[i][j] = tetris.grid[i][j];
-      }
-    }
-  }
-
 
   /////////////////////////////////
   ///     Key Event Handler     ///
@@ -189,8 +154,7 @@ public class GuiTetris extends Application {
       // TODO handle key events here
       if (tetris.isGameover) {
         // check if game over
-        // FIX ME
-        setGameText("Tetris", 0, 0, 8, 2);
+        // FIXME
       } else {
         // if game is not over
         if (e.getCode().equals(KeyCode.UP)) {
@@ -223,7 +187,6 @@ public class GuiTetris extends Application {
           }
         }
       }
-      updateGrid();
     }
 
   }

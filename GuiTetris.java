@@ -19,37 +19,20 @@ import javafx.event.*;
 import javafx.scene.input.*;
 import javafx.scene.text.*;
 import javafx.geometry.*;
-
-import java.awt.*;
 import java.util.*;
 import java.io.*;
 import javafx.scene.media.*;
 
 public class GuiTetris extends Application {
 
-  private static final int PADDING = 10;
-  private static final int TILE_GAP = 2;
-
-  // given tetris, pane and myHeyHandler
-  private Tetris tetris;
-  private GridPane pane;
-  private MyKeyHandler myKeyHandler;
-  // size of regular small rectangle
-  private static final int size = 25;
-
-  private Rectangle[][] rectGrid = new Rectangle[20][10];
-  private Rectangle[][] rectNext = new Rectangle[4][4];
-  private Rectangle[][] rectHold = new Rectangle[4][4];
-
-
   @Override
   public void start(Stage primaryStage) {
     this.tetris = new Tetris();
 
     // Comment out if needed
-    //startMusic();
+    // startMusic();
 
-    // Given code, create a pnae that we can add elemetns to
+    /* Create base pane */
     pane = new GridPane();
     pane.setAlignment(Pos.CENTER);
     pane.setPadding(new Insets(PADDING,PADDING,PADDING,PADDING));
@@ -70,8 +53,6 @@ public class GuiTetris extends Application {
     String message = "" + tetris.linesCleared;
     setGameText(message, 8, 0, 2, 2);
 
-    initRectGrid();
-
 
     /////////////////////////////////////////////
     //// DONT CHANGE, GIVEN SCENE AND STAGE ////
@@ -87,58 +68,153 @@ public class GuiTetris extends Application {
     scene.setOnKeyPressed(myKeyHandler);
     MoveDownWorker worker = new MoveDownWorker();
     worker.start();
-
   }
 
 
   /////////////////////////////////
   ///   Private Helper Method   ///
   /////////////////////////////////
-  private void initRectGrid() {
-    char[][] grid = new char[this.tetris.grid.length][this.tetris.grid[0].length];
-    for (int i = 0; i < this.tetris.grid.length; i++) {
-      for (int j = 0; j < this.tetris.grid[0].length; j++) {
-        grid[i][j] = this.tetris.grid[i][j];
+
+  /**
+   * Draw the background of the pane */
+  private void drawBackground() {
+    for (int i = 0; i < windowLength; i++) {
+      for (int j = 0; j < windowWidth; j++) {
+        Rectangle rectangle;
+        if (i < headerLength) {
+          rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.WHITE);
+        } else {
+          rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.GRAY);
+        }
+        this.pane.add(rectangle, j, i);
       }
     }
+  }
 
-    Piece activePiece = new Piece(tetris.activePiece);
-    for (int i = 0; i < activePiece.tiles.length; i++) {
-      for (int j = 0; j < activePiece.tiles[0].length; j++) {
-        grid[i + activePiece.rowOffset][j + activePiece.colOffset] = activePiece.shape;
-      }
-    }
-
+  /**
+   * draw the background pane and contain the newest changes
+   */
+  private void drawGrid() {
+    char[][] grid = this.tetris.grid;
     for (int i = 0; i < grid.length; i++) {
       for (int j = 0; j < grid[0].length; j++) {
         char shape = grid[i][j];
+        Rectangle rectangle;
         switch (shape) {
           case 'O':
-            this.rectGrid[i][j] = new Rectangle(size, size, Color.RED);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.RED);
             break;
           case 'I':
-            this.rectGrid[i][j] = new Rectangle(size, size, Color.YELLOW);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.YELLOW);
             break;
           case 'S':
-            this.rectGrid[i][j] = new Rectangle(size, size, Color.CYAN);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.CYAN);
             break;
           case 'Z':
-            this.rectGrid[i][j] = new Rectangle(size, size, Color.BLUE);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.BLUE);
             break;
           case 'J':
-            this.rectGrid[i][j] = new Rectangle(size, size, Color.MAGENTA);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.MAGENTA);
             break;
           case 'L':
-            this.rectGrid[i][j] = new Rectangle(size, size, Color.PINK);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.PINK);
             break;
           case 'T':
-            this.rectGrid[i][j] = new Rectangle(size, size, Color.ORANGE);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.ORANGE);
             break;
           default:
-            this.rectGrid[i][j] = new Rectangle(size, size, Color.GRAY);
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.GRAY);
             break;
         }
-        this.pane.add(this.rectGrid[i][j], j, i + 6);
+        this.pane.add(rectangle, j + paneGridOffset[0], i + paneGridOffset[1]);
+      }
+    }
+  }
+
+
+  /**
+   * Author: Yiwen Li
+   * Draw the next Piece
+   */
+  private void drawNext() {
+    char shape = this.tetris.nextPiece.shape;
+    int[][] tiles = this.tetris.nextPiece.tiles;
+    Rectangle rectangle;
+    for (int i = 0; i < tiles.length; i++) {
+      for (int j = 0; j < tiles[0].length; j++) {
+        switch (shape) {
+          case 'O':
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.RED);
+            break;
+          case 'I':
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.YELLOW);
+            break;
+          case 'S':
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.CYAN);
+            break;
+          case 'Z':
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.BLUE);
+            break;
+          case 'J':
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.MAGENTA);
+            break;
+          case 'L':
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.PINK);
+            break;
+          case 'T':
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.ORANGE);
+            break;
+          default:
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.WHITE);
+            break;
+        }
+        if (tiles[i][j] == 1) {
+          pane.add(rectangle, j + paneNextOffset[0], i + paneNextOffset[1]);
+        }
+      }
+    }
+  }
+
+  /**
+   * Draw the active piece in the playground
+   */
+  private void drawActive() {
+    int[][] tiles = this.tetris.activePiece.tiles;
+    char shape = this.tetris.activePiece.shape;
+    int rowOffset = this.tetris.activePiece.rowOffset;
+    int colOffset = this.tetris.activePiece.colOffset;
+    Rectangle rectangle;
+    for (int i = 0; i < tiles.length; i++) {
+      for (int j = 0; j < tiles[0].length; j++) {
+        switch (shape) {
+          case 'O':
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.RED);
+            break;
+          case 'I':
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.YELLOW);
+            break;
+          case 'S':
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.CYAN);
+            break;
+          case 'Z':
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.BLUE);
+            break;
+          case 'J':
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.MAGENTA);
+            break;
+          case 'L':
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.PINK);
+            break;
+          case 'T':
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.ORANGE);
+            break;
+          default:
+            rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.GRAY);
+            break;
+        }
+        if (tiles[i][j] == 1) {
+          this.pane.add(rectangle, j + colOffset + paneGridOffset[0], i + rowOffset + paneGridOffset[1]);
+        }
       }
     }
   }
@@ -164,22 +240,6 @@ public class GuiTetris extends Application {
     pane.setHalignment(text, HPos.CENTER);
   }
 
-  /**
-   * Author: Yiwen Li
-   * private method helper: update method of grid
-   * only update the fourth part of the grid
-   */
-  private void updateGrid() {
-    // Deep copy the grid in tetris
-    for(int i = 0; i < this.backGrid.length; i++) {
-      for(int j = 0; j < this.backGrid[0].length; j++) {
-        // copy each element
-        this.backGrid[i][j] = tetris.grid[i][j];
-      }
-    }
-  }
-
-
   /////////////////////////////////
   ///     Key Event Handler     ///
   /////////////////////////////////
@@ -198,16 +258,11 @@ public class GuiTetris extends Application {
         }
         if (e.getCode().equals(KeyCode.DOWN)) {
           tetris.move(Direction.DOWN);
-
           // TODO
-          System.out.println("Press Down");
-
+          System.out.println("HERE");
         }
         if (e.getCode().equals(KeyCode.LEFT)) {
           tetris.move(Direction.LEFT);
-
-          // TODO
-          System.out.println("Press Left");
         }
         if (e.getCode().equals(KeyCode.RIGHT)) {
           tetris.move(Direction.RIGHT);
@@ -223,7 +278,6 @@ public class GuiTetris extends Application {
           }
         }
       }
-      updateGrid();
     }
 
   }
@@ -267,9 +321,9 @@ public class GuiTetris extends Application {
           // simulate one keydown by calling the
           // handler.handle()
           myKeyHandler.handle(
-                  new KeyEvent(null, "", "", KeyCode.DOWN,
-                          false, false, false, false)
-          );
+              new KeyEvent(null, "", "", KeyCode.DOWN,
+                false, false, false, false)
+              );
 
           move_down_timer = DROP_INTERVAL;
         }
@@ -294,5 +348,28 @@ public class GuiTetris extends Application {
     }
   }
 
+  /* Side length of a unit rectangle */
+  private static final int unitRectSideLength = 25;
+  /* Game based tetris */
+  private Tetris tetris;
+  /* GUI pane */
+  private GridPane pane;
+  /* Key handler */
+  private MyKeyHandler myKeyHandler;
+
+  /* Background section barrier edge */
+  private int windowWidth = 10;
+  private int windowLength = 26;
+  private int headerLength = 6;
+
+  /* Positions/Offsets on Pane -- {colOffset, rowOffset}*/
+  private int[] paneGridOffset = {0, 6};
+  private int[] paneNextOffset = {6, 2};
+  private int[] headerPosition = {0, 0, 8, 2};
+  private int[] scorePosition = {8, 0, 2, 2};
+
+  /* Pane Attributes */
+  private static final int PADDING = 10;
+  private static final int TILE_GAP = 2;
 }
 
