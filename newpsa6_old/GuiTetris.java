@@ -439,6 +439,7 @@ public class GuiTetris extends Application {
           }
         }
       }
+      updateGrid();
     }
 
   }
