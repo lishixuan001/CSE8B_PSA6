@@ -20,6 +20,7 @@ import javafx.scene.input.*;
 import javafx.scene.text.*;
 import javafx.geometry.*;
 
+import java.awt.*;
 import java.util.*;
 import java.io.*;
 import javafx.scene.media.*;
@@ -125,10 +126,17 @@ public class GuiTetris extends Application {
                 color = Color.WHITE;
                 break;
         }
-        for (int i = 0; i < nextPiece.tiles.length; i++) {
-            for (int j = 0; j < nextPiece.tiles[0].length; j++) {
-                this.rectNext[i][j] = new Rectangle(size, size, color);
-                this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+        for (int i = 0; i < rectNext.length; i++) {
+            for (int j = 0; j < rectNext[0].length; j++) {
+                if (i < nextPiece.tiles.length && j < nextPiece.tiles[0].length) {
+                    if (nextPiece.tiles[i][j] == 1) {
+                        this.rectNext[i][j] = new Rectangle(size, size, color);
+                        this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                    }
+                } else {
+                    this.rectNext[i][j] = new Rectangle(size, size, Color.WHITE);
+                    this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                }
             }
         }
     }
