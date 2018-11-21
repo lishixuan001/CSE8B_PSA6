@@ -71,7 +71,7 @@ public class GuiTetris extends Application {
     setGameText(message, 8, 0, 2, 2);
 
     initHeader();
-    initRectGrid();
+    updateGrid();
 
 
     /////////////////////////////////////////////
@@ -103,45 +103,78 @@ public class GuiTetris extends Application {
                 char shape = nextPiece.shape;
                 switch (shape) {
                     case 'O':
-                        this.rectNext[i][j] = new Rectangle(size, size, Color.RED);
+                        if (i >= 1 && i <= 2 && j >= 1 && j <= 2) {
+                            this.rectNext[i][j] = new Rectangle(size, size, Color.RED);
+                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        } else {
+                            this.rectNext[i][j] = new Rectangle(size, size, Color.WHITE);
+                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        }
                         break;
                     case 'I':
-                        this.rectNext[i][j] = new Rectangle(size, size, Color.YELLOW);
+                        if (i == 1 && j <= 3) {
+                            this.rectNext[i][j] = new Rectangle(size, size, Color.YELLOW);
+                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        } else {
+                            this.rectNext[i][j] = new Rectangle(size, size, Color.WHITE);
+                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        }
                         break;
                     case 'S':
-                        this.rectNext[i][j] = new Rectangle(size, size, Color.CYAN);
+                        if ((i == 1 && (j == 1 || j == 2)) || (i == 2 && (j == 0 || j == 1))) {
+                            this.rectNext[i][j] = new Rectangle(size, size, Color.CYAN);
+                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        } else {
+                            this.rectNext[i][j] = new Rectangle(size, size, Color.WHITE);
+                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        }
                         break;
                     case 'Z':
-                        this.rectNext[i][j] = new Rectangle(size, size, Color.BLUE);
+                        if ((i == 1 && (j == 1 || j == 2)) || (i == 2 && (j == 2 || j == 3))) {
+                            this.rectNext[i][j] = new Rectangle(size, size, Color.BLUE);
+                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        } else {
+                            this.rectNext[i][j] = new Rectangle(size, size, Color.WHITE);
+                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        }
                         break;
                     case 'J':
-                        this.rectNext[i][j] = new Rectangle(size, size, Color.MAGENTA);
+                        if ((i == 1 && j <= 2) || (i == 2 && j == 2)) {
+                            this.rectNext[i][j] = new Rectangle(size, size, Color.MAGENTA);
+                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        } else {
+                            this.rectNext[i][j] = new Rectangle(size, size, Color.WHITE);
+                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        }
                         break;
                     case 'L':
-                        this.rectNext[i][j] = new Rectangle(size, size, Color.PINK);
+                        if ((i == 1 && (j >= 1 && j <= 3)) || (i == 2 && j == 1)) {
+                            this.rectNext[i][j] = new Rectangle(size, size, Color.PINK);
+                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        } else {
+                            this.rectNext[i][j] = new Rectangle(size, size, Color.WHITE);
+                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        }
                         break;
                     case 'T':
-                        this.rectNext[i][j] = new Rectangle(size, size, Color.ORANGE);
+                        if ((i == 1 && (j >= 1 && j <= 3)) || (i == 2 && j == 2)) {
+                            this.rectNext[i][j] = new Rectangle(size, size, Color.ORANGE);
+                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        } else {
+                            this.rectNext[i][j] = new Rectangle(size, size, Color.WHITE);
+                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
+                        }
                         break;
                     default:
-                        this.rectNext[i][j] = new Rectangle(size, size, Color.GRAY);
+                        this.rectNext[i][j] = new Rectangle(size, size, Color.WHITE);
+                        this.pane.add(this.rectNext[i][j], j + 6, i + 2);
                         break;
-                }
-                this.pane.add(this.rectNext[i][j], j + 6, i + 2);
-            }
-        }
-
-        for (int i = 0; i < nextPiece.tiles.length; i++) {
-            for (int j = 0; j < nextPiece.tiles[0].length; j++) {
-                if (nextPiece.tiles[i][j] == 1) {
-                    this.rectNext[i][j] = new Rectangle(size, size, Color.BLACK);
-                    this.pane.add(this.rectNext[i][j], j + 6, i + 2);
                 }
             }
         }
     }
 
-    private void initRectGrid() {
+    private void updateGrid() {
       char[][] grid = new char[20][10];
 
       for (int i = 0; i < this.tetris.grid.length; i++) {
@@ -232,16 +265,9 @@ public class GuiTetris extends Application {
         }
         if (e.getCode().equals(KeyCode.DOWN)) {
           tetris.move(Direction.DOWN);
-
-          // TODO
-          System.out.println("Press Down");
-
         }
         if (e.getCode().equals(KeyCode.LEFT)) {
           tetris.move(Direction.LEFT);
-
-          // TODO
-          System.out.println("Press Left");
         }
         if (e.getCode().equals(KeyCode.RIGHT)) {
           tetris.move(Direction.RIGHT);
@@ -257,6 +283,7 @@ public class GuiTetris extends Application {
           }
         }
       }
+      updateGrid();
     }
 
   }
