@@ -50,7 +50,7 @@ public class GuiTetris extends Application {
     setGameText(message, headerPosition);
 
     // draw the default background
-    // drawBackground();
+    drawBackground();
     // draw the next Piece
     drawNext();
     // draw the backgroud
@@ -82,19 +82,19 @@ public class GuiTetris extends Application {
 
   /**
    * Draw the background of the pane */
-//  private void drawBackground() {
-//    for (int i = 0; i < windowLength; i++) {
-//      for (int j = 0; j < windowWidth; j++) {
-//        Rectangle rectangle;
-//        if (i < headerLength) {
-//          rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorHeaderBackground);
-//        } else {
-//          rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorGridBackground);
-//        }
-//        this.pane.add(rectangle, j, i);
-//      }
-//    }
-//  }
+  private void drawBackground() {
+    for (int i = 0; i < windowLength; i++) {
+      for (int j = 0; j < windowWidth; j++) {
+        Rectangle rectangle;
+        if (i < headerLength) {
+          rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorHeaderBackground);
+        } else {
+          rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, colorGridBackground);
+        }
+        this.pane.add(rectangle, j, i);
+      }
+    }
+  }
 
   /**
    * draw the background pane and contain the newest changes
@@ -338,19 +338,10 @@ public class GuiTetris extends Application {
   /* Key handler */
   private MyKeyHandler myKeyHandler;
 
-  /* Background section barrier edge */
-  private static final int windowWidth = 10;
-  private static final int windowLength = 26;
-  private static final int headerLength = 6;
-
   /* Positions/Offsets on Pane -- {colOffset, rowOffset}*/
   private static final int[] paneGridOffset = {0, 6};
   private static final int[] paneNextOffset = {6, 2};
   private static final int[] headerPosition = {0, 0, 8, 2};
-
-  /* Background Rectangles */
-  private static final Rectangle headerBackgroundRectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.WHITE);
-  private static final Rectangle gridBackgroundRectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.WHITE);
 
   /* Color of Pieces */
   private static final Color colorTypeO = Color.RED;
