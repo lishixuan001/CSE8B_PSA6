@@ -40,13 +40,18 @@ public class GuiTetris extends Application {
     pane.setHgap(TILE_GAP); 
     pane.setVgap(TILE_GAP);
 
-    /* Set Header Text */
-    String headerText = this.tetris.isGameover ? "Game Over!" : "Tetris";
-    setGameText(headerText, headerPosition);
+    // check if it is already game over
+    if(!tetris.isGameover){
+      // if it is not game over, set message "Tetris"
+      setGameText("Tetris", 0, 0, 8, 2);
+    } else {
+      // if it is game over, set message "Game Over!"
+      setGameText("Game Over!", 0, 0, 8, 2);
+    }
 
     // set lines cleared
-    String message = Integer.toString(tetris.linesCleared);
-    setGameText(message, scorePosition);
+    String message = "" + tetris.linesCleared;
+    setGameText(message, 8, 0, 2, 2);
 
     // draw the default background
     drawBackground();
@@ -225,25 +230,21 @@ public class GuiTetris extends Application {
 
 
   /**
-   * Set Text section to the pane
+   * Setter method that sets the text's message, fontname, fontsize, color info.
    * @param message - String type, message to put in
-   * @param position - int[] that contains start/end grid position for row/col
+   * @param colstart
+   * @param rowstart
+   * @param colspan
+   * @param rowspan
    */
-  private void setGameText(String message, int[] position) {
-    /* Extract position code */
-    assert position.length == 4;
-    int colIndex = position[0],
-            rowIndex = position[1],
-            colSpan = position[2],
-            rowSpan = position[3];
-
+  private void setGameText(String message, int colstart, int rowstart, int colspan, int rowspan) {
     Text text = new Text();
     // set the message
     text.setText(message);
     // set the font, font size, color
     text.setFont(Font.font("Consolas", FontWeight.BOLD, 30));
     // set the message into the pane according to the location
-    pane.add(text, colIndex, rowIndex, colSpan, rowSpan);
+    pane.add(text, colstart, rowstart, colspan, rowspan);
     // set it to the center
     pane.setHalignment(text, HPos.CENTER);
   }
@@ -258,7 +259,7 @@ public class GuiTetris extends Application {
       if (tetris.isGameover) {
         // check if game over
         // FIX ME
-        setGameText("Tetris", headerPosition);
+        setGameText("Tetris", 0, 0, 8, 2);
       } else {
         // if game is not over
         if (e.getCode().equals(KeyCode.UP)) {
