@@ -238,55 +238,43 @@ public class GuiTetris extends Application {
                     case 'O':
                         if (i >= 1 && i <= 2 && j >= 1 && j <= 2) {
                             this.rectNext[i][j].setFill(Color.RED);
-                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
                         } else {
                             this.rectNext[i][j].setFill(Color.WHITE);
-                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
                         }
                         break;
                     case 'I':
                         if (i == 1 && j <= 3) {
                             this.rectNext[i][j].setFill(Color.YELLOW);
-                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
                         } else {
                             this.rectNext[i][j].setFill(Color.WHITE);
-                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
                         }
                         break;
                     case 'S':
                         if ((i == 1 && (j == 1 || j == 2)) || (i == 2 && (j == 0 || j == 1))) {
                             this.rectNext[i][j].setFill(Color.CYAN);
-                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
                         } else {
                             this.rectNext[i][j].setFill(Color.WHITE);
-                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
                         }
                         break;
                     case 'Z':
                         if ((i == 1 && (j == 1 || j == 2)) || (i == 2 && (j == 2 || j == 3))) {
                             this.rectNext[i][j].setFill(Color.BLUE);
-                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
                         } else {
                             this.rectNext[i][j].setFill(Color.WHITE);
-                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
                         }
                         break;
                     case 'J':
                         if ((i == 1 && j <= 2) || (i == 2 && j == 2)) {
                             this.rectNext[i][j].setFill(Color.MAGENTA);
-                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
                         } else {
                             this.rectNext[i][j] .setFill(Color.WHITE);
-                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
                         }
                         break;
                     case 'L':
                         if ((i == 1 && (j >= 1 && j <= 3)) || (i == 2 && j == 1)) {
                             this.rectNext[i][j].setFill(Color.PINK);
-                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
                         } else {
                             this.rectNext[i][j].setFill(Color.WHITE);
-                            this.pane.add(this.rectNext[i][j], j + 6, i + 2);
                         }
                         break;
                     case 'T':
@@ -405,8 +393,8 @@ public class GuiTetris extends Application {
           }
         }
       }
-      initHeader();
-      initGrid();
+      updateHeader();
+      updateGrid();
     }
 
   }
