@@ -94,7 +94,8 @@ public class GuiTetris extends Application {
   ///   Private Helper Method   ///
   /////////////////////////////////
     private void initRectGrid() {
-      char[][] grid = new char[this.tetris.grid.length][this.tetris.grid[0].length];
+      char[][] grid = new char[20][10];
+
       for (int i = 0; i < this.tetris.grid.length; i++) {
           for (int j = 0; j < this.tetris.grid[0].length; j++) {
               grid[i][j] = this.tetris.grid[i][j];
@@ -104,7 +105,10 @@ public class GuiTetris extends Application {
       Piece activePiece = new Piece(tetris.activePiece);
       for (int i = 0; i < activePiece.tiles.length; i++) {
           for (int j = 0; j < activePiece.tiles[0].length; j++) {
-              grid[i + activePiece.rowOffset][j + activePiece.colOffset] = activePiece.shape;
+              if (activePiece.tiles[i][j] == 1) {
+                  grid[i + activePiece.rowOffset][j + activePiece.colOffset] = activePiece.shape;
+                  System.out.println("i: " + i + "j: " + j);
+              }
           }
       }
 

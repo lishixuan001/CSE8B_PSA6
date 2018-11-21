@@ -17,8 +17,8 @@
       <file leaf-file-name="GuiTetris.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/newpsa6_old/GuiTetris.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+            <state relative-caret-position="262">
+              <caret line="110" column="15" lean-forward="true" selection-start-line="110" selection-start-column="15" selection-end-line="110" selection-end-column="15" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -52,8 +52,8 @@
       <file leaf-file-name="GuiTetris.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../GuiTetris.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-105">
-              <caret line="304" column="5" lean-forward="true" selection-start-line="304" selection-start-column="5" selection-end-line="304" selection-end-column="5" />
+            <state relative-caret-position="186">
+              <caret line="307" column="46" lean-forward="false" selection-start-line="307" selection-start-column="46" selection-end-line="307" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -75,6 +75,7 @@
       <find>piecesize</find>
       <find>gridcol</find>
       <find>setgame</find>
+      <find>length</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -263,12 +264,12 @@
       <option name="presentableId" value="Default" />
       <updated>1542753191653</updated>
       <workItem from="1542753192943" duration="784000" />
-      <workItem from="1542754360222" duration="16117000" />
+      <workItem from="1542754360222" duration="16438000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16901000" />
+    <option name="totallyTimeSpent" value="17222000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -404,22 +405,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/newpsa6_old/Tetris.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-587">
-          <caret line="39" column="15" lean-forward="false" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../GuiTetris.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-105">
-          <caret line="304" column="5" lean-forward="true" selection-start-line="304" selection-start-column="5" selection-end-line="304" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GuiTetris.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24">
@@ -431,10 +416,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/newpsa6_old/Tetris.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-587">
+          <caret line="39" column="15" lean-forward="false" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../GuiTetris.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="307" column="46" lean-forward="false" selection-start-line="307" selection-start-column="46" selection-end-line="307" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/newpsa6_old/GuiTetris.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+        <state relative-caret-position="262">
+          <caret line="110" column="15" lean-forward="true" selection-start-line="110" selection-start-column="15" selection-end-line="110" selection-end-column="15" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
