@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7a44f503-5ad6-4dc3-888d-29b4d56201b4" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/GuiTetris.java" afterPath="$PROJECT_DIR$/GuiTetris.java" />
+      <change beforePath="$PROJECT_DIR$/newpsa6_old/GuiTetris.java" afterPath="$PROJECT_DIR$/newpsa6_old/GuiTetris.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,14 +14,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.34763947">
+    <splitter split-orientation="horizontal" split-proportion="0.6902718">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="Direction.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Direction.java">
+          <file leaf-file-name="GuiTetris.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/newpsa6_old/GuiTetris.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="168">
-                  <caret line="12" column="12" lean-forward="false" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
+                <state relative-caret-position="-1861">
+                  <caret line="68" column="39" lean-forward="true" selection-start-line="68" selection-start-column="39" selection-end-line="68" selection-end-column="39" />
                   <folding />
                 </state>
               </provider>
@@ -29,31 +30,11 @@
           <file leaf-file-name="GuiTetris.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/GuiTetris.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="5222">
-                  <caret line="338" column="19" lean-forward="true" selection-start-line="338" selection-start-column="19" selection-end-line="338" selection-end-column="19" />
+                <state relative-caret-position="303">
+                  <caret line="44" column="44" lean-forward="true" selection-start-line="44" selection-start-column="44" selection-end-line="44" selection-end-column="44" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Piece.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Piece.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="584">
-                  <caret line="67" column="9" lean-forward="true" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="16" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Tetris.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Tetris.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1516">
-                  <caret line="111" column="45" lean-forward="false" selection-start-line="111" selection-start-column="45" selection-end-line="111" selection-end-column="45" />
-                  <folding />
                 </state>
               </provider>
             </entry>
@@ -63,10 +44,10 @@
       <split-second>
         <leaf>
           <file leaf-file-name="GuiTetris.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/GuiTetris.java">
+            <entry file="file://$PROJECT_DIR$/newpsa6_old/GuiTetris.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="288">
-                  <caret line="21" column="19" lean-forward="true" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+                <state relative-caret-position="-900">
+                  <caret line="88" column="21" lean-forward="false" selection-start-line="88" selection-start-column="21" selection-end-line="88" selection-end-column="21" />
                   <folding />
                 </state>
               </provider>
@@ -100,6 +81,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/newpsa6_old/GuiTetris.java" />
         <option value="$PROJECT_DIR$/GuiTetris.java" />
       </list>
     </option>
@@ -136,6 +118,11 @@
             <path>
               <item name="newpsa6" type="b2602c69:ProjectViewProjectNode" />
               <item name="newpsa6" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="newpsa6" type="b2602c69:ProjectViewProjectNode" />
+              <item name="newpsa6" type="462c0819:PsiDirectoryNode" />
+              <item name="newpsa6_old" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -264,12 +251,12 @@
       <option name="presentableId" value="Default" />
       <updated>1542753191653</updated>
       <workItem from="1542753192943" duration="784000" />
-      <workItem from="1542754360222" duration="11000000" />
+      <workItem from="1542754360222" duration="11587000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11784000" />
+    <option name="totallyTimeSpent" value="12371000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -344,7 +331,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="17" column="22" lean-forward="true" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -359,7 +348,7 @@
     <entry file="file://$PROJECT_DIR$/Piece.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="584">
-          <caret line="67" column="9" lean-forward="true" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="16" />
+          <caret line="67" column="9" lean-forward="false" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -372,11 +361,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/newpsa6_old/GuiTetris.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1861">
+          <caret line="68" column="39" lean-forward="true" selection-start-line="68" selection-start-column="39" selection-end-line="68" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GuiTetris.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="21" column="19" lean-forward="true" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
-          <folding />
+        <state relative-caret-position="303">
+          <caret line="44" column="44" lean-forward="true" selection-start-line="44" selection-start-column="44" selection-end-line="44" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

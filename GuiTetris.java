@@ -107,20 +107,28 @@ public class GuiTetris extends Application {
         switch (shape) {
           case 'O':
             rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.RED);
+            break;
           case 'I':
             rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.YELLOW);
+            break;
           case 'S':
             rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.CYAN);
+            break;
           case 'Z':
             rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.BLUE);
+            break;
           case 'J':
             rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.MAGENTA);
+            break;
           case 'L':
             rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.PINK);
+            break;
           case 'T':
             rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.ORANGE);
+            break;
           default:
             rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.GRAY);
+            break;
         }
         this.pane.add(rectangle, j + paneGridOffset[0], i + paneGridOffset[1]);
       }
@@ -141,20 +149,28 @@ public class GuiTetris extends Application {
         switch (shape) {
           case 'O':
             rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.RED);
+            break;
           case 'I':
             rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.YELLOW);
+            break;
           case 'S':
             rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.CYAN);
+            break;
           case 'Z':
             rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.BLUE);
+            break;
           case 'J':
             rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.MAGENTA);
+            break;
           case 'L':
             rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.PINK);
+            break;
           case 'T':
             rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.ORANGE);
+            break;
           default:
             rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.WHITE);
+            break;
         }
         if (tiles[i][j] == 1) {
           pane.add(rectangle, j + paneNextOffset[0], i + paneNextOffset[1]);
@@ -177,20 +193,28 @@ public class GuiTetris extends Application {
         switch (shape) {
           case 'O':
             rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.RED);
+            break;
           case 'I':
             rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.YELLOW);
+            break;
           case 'S':
             rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.CYAN);
+            break;
           case 'Z':
             rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.BLUE);
+            break;
           case 'J':
             rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.MAGENTA);
+            break;
           case 'L':
             rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.PINK);
+            break;
           case 'T':
             rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.ORANGE);
+            break;
           default:
             rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.GRAY);
+            break;
         }
         if (tiles[i][j] == 1) {
           this.pane.add(rectangle, j + colOffset + paneGridOffset[0], i + rowOffset + paneGridOffset[1]);

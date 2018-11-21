@@ -27,7 +27,6 @@ public class GuiTetris extends Application {
 
   private static final int PADDING = 10;
   private static final int TILE_GAP = 2;
-  // TODO add more constants
 
   // tetris playground
   private static char[][] backGrid = new char[20][10];
@@ -35,16 +34,10 @@ public class GuiTetris extends Application {
   // size of regular small rectangle
   private static final int size = 25;
 
-
   // given tetris, pane and myHeyHandler
   private Tetris tetris;
   private GridPane pane;
   private MyKeyHandler myKeyHandler;
-
-  // TODO add more instance variables 
-
-  // current score
-  private int curScore;
 
   // active piece
   private Piece theActive;
@@ -88,13 +81,10 @@ public class GuiTetris extends Application {
 
     // draw the next Piece
     drawNext();
-
     // deep copy the grid
     updateGrid();
-
     // draw the active Piece
     drawActive();
-
     // draw the backgroud
     drawBackground();
 
