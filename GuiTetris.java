@@ -193,7 +193,7 @@ public class GuiTetris extends Application {
           default:
             rectangle = new Rectangle(unitRectSideLength, unitRectSideLength, Color.GRAY);
         }
-        if (i + rowOffset + paneGridOffset[1] >= 6) {
+        if (tiles[i][j] == 1) {
           this.pane.add(rectangle, j + colOffset + paneGridOffset[0], i + rowOffset + paneGridOffset[1]);
         }
       }
