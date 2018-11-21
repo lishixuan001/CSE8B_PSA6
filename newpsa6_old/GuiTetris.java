@@ -88,6 +88,9 @@ public class GuiTetris extends Application {
     // draw the backgroud
     drawBackground();
 
+    // draw the hold
+    drawHold();
+
 
     /////////////////////////////////////////////
     //// DONT CHANGE, GIVEN SCENE AND STAGE ////
@@ -110,6 +113,52 @@ public class GuiTetris extends Application {
   /////////////////////////////////
   ///   Private Helper Method   ///
   /////////////////////////////////
+
+  /* draw the hold piece */
+  private void drawHold() {
+    rectPiece = new Rectangle[4][4];
+    for (int i = 0; i < rectPiece.length; i++) {
+      for (int j = 0; j < rectPiece[0].length; j++) {
+
+        if (tetris.storedPiece != null) {
+          // get the next Piece
+          this.theNext = new Piece(tetris.storedPiece);
+          // get the next Piece shape
+          char nextShape = theNext.shape;
+          switch (nextShape) {
+            case 'O':
+              this.rectPiece[i][j] = new Rectangle(size, size, Color.RED);
+              break;
+            case 'I':
+              this.rectPiece[i][j] = new Rectangle(size, size, Color.YELLOW);
+              break;
+            case 'S':
+              this.rectPiece[i][j] = new Rectangle(size, size, Color.CYAN);
+              break;
+            case 'Z':
+              this.rectPiece[i][j] = new Rectangle(size, size, Color.BLUE);
+              break;
+            case 'J':
+              this.rectPiece[i][j] = new Rectangle(size, size, Color.MAGENTA);
+              break;
+            case 'L':
+              this.rectPiece[i][j] = new Rectangle(size, size, Color.PINK);
+              break;
+            case 'T':
+              this.rectPiece[i][j] = new Rectangle(size, size, Color.ORANGE);
+              break;
+            default:
+              this.rectPiece[i][j] = new Rectangle(size, size, Color.WHITE);
+              break;
+          }
+          pane.add(rectPiece[i][j], j, 2 + i);
+        } else {
+          this.rectPiece[i][j] = new Rectangle(size, size, Color.WHITE);
+          pane.add(rectPiece[i][j], j, 2 + i);
+        }
+      }
+    }
+  }
 
   /**
    * Author: Yiwen Li
