@@ -40,6 +40,8 @@ public class GuiTetris extends Application {
     pane.setHgap(TILE_GAP); 
     pane.setVgap(TILE_GAP);
 
+    System.out.println("NEWSTART");
+
     // check if it is already game over
     if(!tetris.isGameover){
       // if it is not game over, set message "Tetris"
@@ -267,6 +269,7 @@ public class GuiTetris extends Application {
         }
         if (e.getCode().equals(KeyCode.DOWN)) {
           tetris.move(Direction.DOWN);
+          // TODO
           System.out.println("HERE");
         }
         if (e.getCode().equals(KeyCode.LEFT)) {
