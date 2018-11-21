@@ -50,13 +50,13 @@ public class GuiTetris extends Application {
     setGameText(message, headerPosition);
 
     // draw the default background
-    drawBackground();
+    // drawBackground();
     // draw the next Piece
-    drawNext();
+    // drawNext();
     // draw the backgroud
     drawGrid();
     // draw the active Piece
-    drawActive();
+    // drawActive();
 
 
     /////////////////////////////////////////////
@@ -168,18 +168,18 @@ public class GuiTetris extends Application {
   /**
    * Draw the active piece in the playground
    */
-  private void drawActive() {
-    int[][] tiles = this.tetris.activePiece.tiles;
-    char shape = this.tetris.activePiece.shape;
-    int rowOffset = this.tetris.activePiece.rowOffset;
-    int colOffset = this.tetris.activePiece.colOffset;
-    Rectangle rectangle = getRectangleByShape(shape);
-    for (int i = 0; i < tiles.length; i++) {
-      for (int j = 0; j < tiles[0].length; j++) {
-        this.pane.add(rectangle, j + colOffset + paneGridOffset[0], i + rowOffset + paneGridOffset[1]);
-      }
-    }
-  }
+//  private void drawActive() {
+//    int[][] tiles = this.tetris.activePiece.tiles;
+//    char shape = this.tetris.activePiece.shape;
+//    int rowOffset = this.tetris.activePiece.rowOffset;
+//    int colOffset = this.tetris.activePiece.colOffset;
+//    Rectangle rectangle = getRectangleByShape(shape);
+//    for (int i = 0; i < tiles.length; i++) {
+//      for (int j = 0; j < tiles[0].length; j++) {
+//        this.pane.add(rectangle, j + colOffset + paneGridOffset[0], i + rowOffset + paneGridOffset[1]);
+//      }
+//    }
+//  }
 
 
   /**
@@ -294,32 +294,6 @@ public class GuiTetris extends Application {
       }
     }
   } // end of private class MoveDownWorker
-
-  /**
-   * Get rectangle by shape
-   * @param shape : shape of the piece;
-   * @return : rectangle of corresponding piece
-   * */
-  private Rectangle getRectangleByShape(char shape) {
-    switch (shape) {
-      case 'O':
-        return new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeO);
-      case 'I':
-        return new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeI);
-      case 'S':
-        return new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeS);
-      case 'Z':
-        return new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeZ);
-      case 'J':
-        return new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeJ);
-      case 'L':
-        return new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeL);
-      case 'T':
-        return new Rectangle(unitRectSideLength, unitRectSideLength, colorTypeT);
-      default:
-        return new Rectangle(unitRectSideLength, unitRectSideLength, colorBackground);
-    }
-  }
 
   /**
    * Cheng Shen Nov. 11th 2018
