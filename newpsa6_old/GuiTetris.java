@@ -527,6 +527,9 @@ public class GuiTetris extends Application {
         if (e.getCode().equals(KeyCode.SPACE)) {
           tetris.drop();
         }
+        if (e.getCode().equals(KeyCode.Z)) {
+            tetris.hold();
+        }
         if (e.getCode().equals(KeyCode.O)) {
           try {
             tetris.outputToFile();
