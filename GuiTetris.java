@@ -53,15 +53,6 @@ public class GuiTetris extends Application {
     String message = "" + tetris.linesCleared;
     setGameText(message, 8, 0, 2, 2);
 
-    // draw the default background
-    drawBackground();
-    // draw the next Piece
-    drawNext();
-    // draw the backgroud
-    drawGrid();
-    // draw the active Piece
-    drawActive();
-
 
     /////////////////////////////////////////////
     //// DONT CHANGE, GIVEN SCENE AND STAGE ////

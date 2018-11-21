@@ -19,6 +19,8 @@ import javafx.event.*;
 import javafx.scene.input.*;
 import javafx.scene.text.*;
 import javafx.geometry.*;
+
+import java.awt.*;
 import java.util.*;
 import java.io.*;
 import javafx.scene.media.*;
@@ -28,27 +30,17 @@ public class GuiTetris extends Application {
   private static final int PADDING = 10;
   private static final int TILE_GAP = 2;
 
-  // tetris playground
-  private static char[][] backGrid = new char[20][10];
-
-  // size of regular small rectangle
-  private static final int size = 25;
-
   // given tetris, pane and myHeyHandler
   private Tetris tetris;
   private GridPane pane;
   private MyKeyHandler myKeyHandler;
+  // size of regular small rectangle
+  private static final int size = 25;
 
-  // active piece
-  private Piece theActive;
-  // next piece
-  private Piece theNext;
+  private Rectangle[][] rectGrid = new Rectangle[20][10];
+  private Rectangle[][] rectNext = new Rectangle[4][4];
+  private Rectangle[][] rectHold = new Rectangle[4][4];
 
-  // the titleText, scoreText and gameoverText
-  private Text titleText, scoreText, text;
-
-  // the rectangle piece
-  private Rectangle[][] rectPiece;
 
   @Override
   public void start(Stage primaryStage) {
@@ -65,12 +57,6 @@ public class GuiTetris extends Application {
     pane.setHgap(TILE_GAP); 
     pane.setVgap(TILE_GAP);
 
-    // TODO initialize GUI elements here
-
-    // TODO
-    System.out.println("NEWSTART");
-
-
     // check if it is already game over
     if(!tetris.isGameover){
       // if it is not game over, set message "Tetris"
@@ -84,17 +70,7 @@ public class GuiTetris extends Application {
     String message = "" + tetris.linesCleared;
     setGameText(message, 8, 0, 2, 2);
 
-    // draw the next Piece
-    drawNext();
-    // deep copy the grid
-    updateGrid();
-    // draw the active Piece
-    drawActive();
-    // draw the backgroud
-    drawBackground();
-
-    // draw the hold
-    drawHold();
+    initRectGrid();
 
 
     /////////////////////////////////////////////
@@ -118,258 +94,54 @@ public class GuiTetris extends Application {
   /////////////////////////////////
   ///   Private Helper Method   ///
   /////////////////////////////////
-
-  /* draw the hold piece */
-  private void drawHold() {
-    rectPiece = new Rectangle[4][4];
-    for (int i = 0; i < rectPiece.length; i++) {
-      for (int j = 0; j < rectPiece[0].length; j++) {
-
-        if (tetris.storedPiece != null) {
-          // get the next Piece
-          this.theNext = new Piece(tetris.storedPiece);
-          // get the next Piece shape
-          char nextShape = theNext.shape;
-          switch (nextShape) {
-            case 'O':
-              this.rectPiece[i][j] = new Rectangle(size, size, Color.RED);
-              break;
-            case 'I':
-              this.rectPiece[i][j] = new Rectangle(size, size, Color.YELLOW);
-              break;
-            case 'S':
-              this.rectPiece[i][j] = new Rectangle(size, size, Color.CYAN);
-              break;
-            case 'Z':
-              this.rectPiece[i][j] = new Rectangle(size, size, Color.BLUE);
-              break;
-            case 'J':
-              this.rectPiece[i][j] = new Rectangle(size, size, Color.MAGENTA);
-              break;
-            case 'L':
-              this.rectPiece[i][j] = new Rectangle(size, size, Color.PINK);
-              break;
-            case 'T':
-              this.rectPiece[i][j] = new Rectangle(size, size, Color.ORANGE);
-              break;
-            default:
-              this.rectPiece[i][j] = new Rectangle(size, size, Color.WHITE);
-              break;
+    private void initRectGrid() {
+      char[][] grid = new char[this.tetris.grid.length][this.tetris.grid[0].length];
+      for (int i = 0; i < this.tetris.grid.length; i++) {
+          for (int j = 0; j < this.tetris.grid[0].length; j++) {
+              grid[i][j] = this.tetris.grid[i][j];
           }
-          pane.add(rectPiece[i][j], j, 2 + i);
-        } else {
-          this.rectPiece[i][j] = new Rectangle(size, size, Color.WHITE);
-          pane.add(rectPiece[i][j], j, 2 + i);
-        }
+      }
+
+      Piece activePiece = new Piece(tetris.activePiece);
+      for (int i = 0; i < activePiece.tiles.length; i++) {
+          for (int j = 0; j < activePiece.tiles[0].length; j++) {
+              grid[i + activePiece.rowOffset][j + activePiece.colOffset] = activePiece.shape;
+          }
+      }
+
+      for (int i = 0; i < grid.length; i++) {
+          for (int j = 0; j < grid[0].length; j++) {
+              char shape = grid[i][j];
+              switch (shape) {
+                  case 'O':
+                      this.rectGrid[i][j] = new Rectangle(size, size, Color.RED);
+                      break;
+                  case 'I':
+                      this.rectGrid[i][j] = new Rectangle(size, size, Color.YELLOW);
+                      break;
+                  case 'S':
+                      this.rectGrid[i][j] = new Rectangle(size, size, Color.CYAN);
+                      break;
+                  case 'Z':
+                      this.rectGrid[i][j] = new Rectangle(size, size, Color.BLUE);
+                      break;
+                  case 'J':
+                      this.rectGrid[i][j] = new Rectangle(size, size, Color.MAGENTA);
+                      break;
+                  case 'L':
+                      this.rectGrid[i][j] = new Rectangle(size, size, Color.PINK);
+                      break;
+                  case 'T':
+                      this.rectGrid[i][j] = new Rectangle(size, size, Color.ORANGE);
+                      break;
+                  default:
+                      this.rectGrid[i][j] = new Rectangle(size, size, Color.GRAY);
+                      break;
+              }
+              this.pane.add(this.rectGrid[i][j], j, i + 6);
+          }
       }
     }
-  }
-
-  /**
-   * Author: Yiwen Li
-   * draw the background pane and contain the newest changes
-   */
-  private void drawBackground() {
-    // initialize 20 rows
-    rectPiece = new Rectangle[20][10];
-    for(int i = 0; i < backGrid.length; i++) {
-      // initialize 10 columns
-      for(int j = 0; j < backGrid[0].length; j++) {
-        if(this.backGrid[i][j] == 'O') {
-          // if it is shape O, draw READ
-          this.rectPiece[i][j] = new Rectangle(size, size, Color.RED);
-          // add rectangle to the pane
-          pane.add(rectPiece[i][j], j, i + 6);
-        }
-        else if(this.backGrid[i][j] == 'I') {
-          // if it is shape I, draw Color.YELLOW
-          this.rectPiece[i][j] = new Rectangle(size, size, Color.YELLOW);
-          // add rectangle to the pane
-          pane.add(rectPiece[i][j], j, i + 6);
-        }
-        else if(this.backGrid[i][j] == 'S') {
-          // if it is shape S, draw Color.CYAN
-          this.rectPiece[i][j] = new Rectangle(size, size, Color.CYAN);
-          // add rectangle to the pane
-          pane.add(rectPiece[i][j], j, i + 6);
-        }
-        else if(this.backGrid[i][j] == 'Z') {
-          // if it is shape Z, draw COLORZ
-          this.rectPiece[i][j] = new Rectangle(size, size, Color.BLUE);
-          // add rectangle to the pane
-          pane.add(rectPiece[i][j], j, i + 6);
-        }
-        else if(this.backGrid[i][j] == 'J') {
-          // if it is shape J, draw Color.MAGENTA
-          this.rectPiece[i][j] = new Rectangle(size, size, Color.MAGENTA);
-          // add rectangle to the pane
-          pane.add(rectPiece[i][j], j, i + 6);
-        }
-        else if(this.backGrid[i][j] == 'L') {
-          // if it is shape L, draw Color.PINK
-          this.rectPiece[i][j] = new Rectangle(size, size, Color.PINK);
-          // add rectangle to the pane
-          pane.add(rectPiece[i][j], j, i + 6);
-        }
-        else if(this.backGrid[i][j] == 'T') {
-          // if it is shape T, draw Color.ORANGE
-          this.rectPiece[i][j] = new Rectangle(size, size, Color.ORANGE);
-          // add rectangle to the pane
-          pane.add(rectPiece[i][j], j, i + 6);
-        } else {
-          // for the rest of them, draw grey color
-          this.rectPiece[i][j] = new Rectangle(size, size, Color.GREY);
-          // add rectangle to the pane
-          pane.add(rectPiece[i][j], j, i + 6);
-        }
-      }
-    }
-  }
-
-
-  /**
-   * Author: Yiwen Li
-   * Draw the next Piece
-   */
-  private void drawNext() {
-    // next piece rectangle
-    rectPiece = new Rectangle[4][4];
-    for(int i = 0; i < rectPiece.length; i++) {
-      for(int j = 0; j < rectPiece[0].length; j++) {
-        // get the next Piece
-        this.theNext = new Piece(tetris.nextPiece);
-        // get the next Piece shape
-        char nextShape = theNext.shape;
-
-        if (nextShape == 'O') {
-          // draw 'O' in the rectangle
-          if ((i > 0 && i < 3) && (j > 0 && j < 3)) {
-            // draw the color of O
-            rectPiece[i][j] = new Rectangle(size, size, Color.RED);
-            // add rectangle to the pane
-            pane.add(rectPiece[i][j], 6 + j, 2 + i);
-          } else {
-            // for non piece area, draw white
-            rectPiece[i][j] = new Rectangle(size, size, Color.WHITE);
-            // add rectangle to the pane
-            pane.add(rectPiece[i][j], 6 + j, 2 + i);
-          }
-        }
-        if (nextShape == 'I') {
-          // draw 'I' in the rectangle
-          if (i == 1) {
-            // draw the color of I
-            rectPiece[i][j] = new Rectangle(size, size, Color.YELLOW);
-            // add rectangle to the pane
-            pane.add(rectPiece[i][j], 6 + j, 2 + i);
-          } else {
-            // for non piece area, draw white
-            rectPiece[i][j] = new Rectangle(size, size, Color.WHITE);
-            // add rectangle to the pane
-            pane.add(rectPiece[i][j], 6 + j, 2 + i);
-          }
-        }
-
-        if (nextShape == 'S') {
-          // draw 'S' in the rectangle
-          if ((i == 1 && (j == 1 || j == 2)) || (i == 2 && (j == 1 || j == 0))) {
-            // draw the color of S
-            rectPiece[i][j] = new Rectangle(size, size, Color.CYAN);
-            // add rectangle to the pane
-            pane.add(rectPiece[i][j], 6 + j, 2 + i);
-          } else {
-            // for non piece area, draw white
-            rectPiece[i][j] = new Rectangle(size, size, Color.WHITE);
-            // add rectangle to the pane
-            pane.add(rectPiece[i][j], 6 + j, 2 + i);
-          }
-        }
-
-        if (nextShape == 'Z') {
-          // draw 'Z' in the rectangle
-          if ((i == 1 && (j == 1 || j == 0)) || (i == 2 && (j == 1 || j == 2))) {
-            // draw the color of Z
-            rectPiece[i][j] = new Rectangle(size, size, Color.BLUE);
-            // add rectangle to the pane
-            pane.add(rectPiece[i][j], 6 + j, 2 + i);
-          } else {
-            // for non piece area, draw white
-            rectPiece[i][j] = new Rectangle(size, size, Color.WHITE);
-            // add rectangle to the pane
-            pane.add(rectPiece[i][j], 6 + j, 2 + i);
-          }
-        }
-
-        if (nextShape == 'J') {
-          // draw 'J' in the rectangle
-          if ((i == 1) || (i == 2 && j == 2)) {
-            // draw the color of J
-            rectPiece[i][j] = new Rectangle(size, size, Color.MAGENTA);
-            // add rectangle to the pane
-            pane.add(rectPiece[i][j], 6 + j, 2 + i);
-          } else {
-            // for non piece area, draw white
-            rectPiece[i][j] = new Rectangle(size, size, Color.WHITE);
-            // add rectangle to the pane
-            pane.add(rectPiece[i][j], 6 + j, 2 + i);
-          }
-        }
-
-        if (nextShape == 'L') {
-          // draw 'L' in the rectangle
-          if ((i == 1) || (i == 2 && j == 0)) {
-            // draw the color of L
-            rectPiece[i][j] = new Rectangle(size, size, Color.PINK);
-            // add rectangle to the pane
-            pane.add(rectPiece[i][j], 6 + j, 2 + i);
-          } else {
-            // for non piece area, draw white
-            rectPiece[i][j] = new Rectangle(size, size, Color.WHITE);
-            // add rectangle to the pane
-            pane.add(rectPiece[i][j], 6 + j, 2 + i);
-          }
-        }
-
-        if (nextShape == 'T') {
-          // draw 'T' in the rectangle
-          if ((i == 1) || (i == 2 && j == 1)) {
-            // draw the color of T
-            rectPiece[i][j] = new Rectangle(size, size, Color.ORANGE);
-            // add rectangle to the pane
-            pane.add(rectPiece[i][j], 6 + j, 2 + i);
-          } else {
-            // for non piece area, draw white
-            rectPiece[i][j] = new Rectangle(size, size, Color.WHITE);
-            // add rectangle to the pane
-            pane.add(rectPiece[i][j], 6 + j, 2 + i);
-          }
-        }
-      }
-    }
-  }
-
-  /**
-   * Draw the active piece in the playground
-   */
-  private void drawActive() {
-    // get the active piece
-    this.theActive = new Piece(tetris.activePiece);
-    // get tiles of the Active
-    int[][] matrix = this.theActive.tiles;
-    // rowoffset of the active
-    int rowS = this.theActive.rowOffset;
-    // coloffset of the active
-    int colS = this.theActive.colOffset;
-
-    // put the active piece into grid
-    for(int i = 0; i < matrix.length; i++) {
-      for(int j = 0; j < matrix[0].length; j++) {
-        if(matrix[i][j] == 1) {
-          this.backGrid[i + rowS][j + colS] = theActive.shape;
-        }
-      }
-    }
-  }
 
 
   /**
@@ -452,16 +224,6 @@ public class GuiTetris extends Application {
         }
       }
       updateGrid();
-      // draw the next Piece
-      drawNext();
-      // deep copy the grid
-      updateGrid();
-      // draw the active Piece
-      drawActive();
-      // draw the backgroud
-      drawBackground();
-      // draw the hold
-      drawHold();
     }
 
   }
